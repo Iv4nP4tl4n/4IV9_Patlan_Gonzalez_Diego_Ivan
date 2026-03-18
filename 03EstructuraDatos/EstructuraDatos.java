@@ -8,12 +8,13 @@ En java:
 6. Desarrollar un programa para calcular el area y perimetro de 5 diferentes figuras.
 7. desarolar un programa para desarollar una tabla. 
 8. Desarrollar un programa para calcular un factorial con recursividad.
+9. Triangulo equilatero y rombo
 10. desarrollar una figura hueca.
 11. Realizar algunos patrones.
 12. Realizar un diamante.
 13. Realizar una calculadora basica. + - / * 
 
-Tarea:1 al 6
+Tarea:
 
 */
 import java.util.Scanner;
@@ -36,14 +37,14 @@ public class EstructuraDatos{
             System.out.println("4- Positivos y negetivos");
             System.out.println("5- Tienda de productos");
             System.out.println("6- Area y perimetro de las figuras");
-            System.out.println("7- ");
+            System.out.println("7- Tabla de multiplicar");
             System.out.println("8- ");
             System.out.println("9- ");
             System.out.println("10- ");
             System.out.println("11- ");
             System.out.println("12- ");
             System.out.println("13- ");
-            System.out.println("14- ");
+            System.out.println("14- \n");
 
             opcion = entrada.nextInt();
 
@@ -319,7 +320,22 @@ public class EstructuraDatos{
                     }
                     break;
 
+
+
+
+
+
+
                 case 7:
+                    //Tabla de multiplicar
+                    System.out.println("TABLA DE MULTIPLICAR"); 
+                    for(int n = 1; n <=10; n++){
+
+                        System.out.println("");
+                        System.out.println("---------------------------------------- \n" + 
+                        "|" + n + " | " + (n*10 + " / " + (n*100) + " / " + (n*1000)));
+
+                    }
                     
                     break;
 
@@ -327,9 +343,26 @@ public class EstructuraDatos{
                     
                     break;
 
-                case 9:
-                    
-                    break;
+                    case 9:
+
+                        System.out.println("Vamos a realizar un dibujo de un cuadrado magico");
+                        System.out.println("Ingrese el tamaño del cuadrado (Entre 1 y 20): ");
+
+                        int n1 = entrada.nextInt();
+                        if (n1 >= 1 && n1 <= 20) {
+                            // Se imprime
+                            for (int i = 1; i <= n1; i++) {
+                                // Se recorren las columnas
+                                for (int j = 1; j <= n1; j++) {
+                                    System.out.print("* ");
+                                }
+                                System.out.println(" ");
+                            }
+                        } else {
+                            System.out.println("Porfavor ingrese un numero entre 1 y 20");
+                        }
+
+                        break;
 
                 case 10:
                     

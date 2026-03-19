@@ -8,13 +8,14 @@ En java:
 6. Desarrollar un programa para calcular el area y perimetro de 5 diferentes figuras.
 7. desarolar un programa para desarollar una tabla. 
 8. Desarrollar un programa para calcular un factorial con recursividad.
-9. Triangulo equilatero y rombo
-10. desarrollar una figura hueca.
-11. Realizar algunos patrones.
-12. Realizar un diamante.
-13. Realizar una calculadora basica. + - / * 
+9. Cuadrado magico
+10. Triangulo equilatero y rombo
+11. desarrollar una figura hueca.
+12. Realizar algunos patrones.
+13. Realizar un diamante.
+14. Realizar una calculadora basica. + - / * 
 
-Tarea:
+Tarea: Terminar
 
 */
 import java.util.Scanner;
@@ -38,13 +39,13 @@ public class EstructuraDatos{
             System.out.println("5- Tienda de productos");
             System.out.println("6- Area y perimetro de las figuras");
             System.out.println("7- Tabla de multiplicar");
-            System.out.println("8- ");
-            System.out.println("9- ");
-            System.out.println("10- ");
-            System.out.println("11- ");
-            System.out.println("12- ");
-            System.out.println("13- ");
-            System.out.println("14- \n");
+            System.out.println("8- Calcular un factorial con recursividad.");
+            System.out.println("9- Cuadrado magico");
+            System.out.println("10- Triangulo equilatero y rombo");
+            System.out.println("11- Figura hueca");
+            System.out.println("12- Patrones");
+            System.out.println("13- Diamante");
+            System.out.println("14- Calculadora basica. + - / * \n");
 
             opcion = entrada.nextInt();
 
@@ -327,19 +328,42 @@ public class EstructuraDatos{
 
 
                 case 7:
-                    //Tabla de multiplicar
-                    System.out.println("TABLA DE MULTIPLICAR"); 
-                    for(int n = 1; n <=10; n++){
+                    // Tabla de multiplicar
+                    System.out.println("TABLA DE MULTIPLICAR");
 
-                        System.out.println("");
-                        System.out.println("---------------------------------------- \n" + 
-                        "|" + n + " | " + (n*10 + " / " + (n*100) + " / " + (n*1000)));
+                    for(int n = 1; n <= 10; n++){
+
+                        System.out.println("----------------------------------------");
+                        System.out.println("| " + n + " | " 
+                            + (n * 10) + " | " 
+                            + (n * 100) + " | " 
+                            + (n * 1000) + " |");
 
                     }
+
+                    System.out.println("----------------------------------------");
                     
                     break;
 
                 case 8:
+                    System.out.println("Calculo de factorial (forma recursiva simulada)");
+                    System.out.println("Ingrese un numero:");
+
+                    int numero = entrada.nextInt();
+
+                    if(numero >= 0){
+
+                        int resultado = 1;
+
+                        for(int i = numero; i > 0; i--){
+                            resultado = resultado * i;
+                        }
+
+                        System.out.println("El factorial de " + numero + " es: " + resultado);
+
+                    }else{
+                        System.out.println("El factorial no existe para numeros negativos");
+                    }
                     
                     break;
 
@@ -365,23 +389,135 @@ public class EstructuraDatos{
                         break;
 
                 case 10:
+                    System.out.println("Triangulo equilatero");
+                    System.out.println("Ingrese el lado:");
+                    int lado = entrada.nextInt();
+
+                    for(int i = 1; i <= lado; i++){
+                        for(int j = 1; j <= i; j++){
+                            System.out.print("* ");
+                        }
+                        System.out.println();
+                    }
+
+                    System.out.println("Rombo");
+                    System.out.println("Ingrese tamaño: ");
+                    int n = entrada.nextInt();
+
+                    for(int i = 1; i <= n; i++){
+                        for(int j = 1; j <= n - i; j++){
+                            System.out.print(" ");
+                        }
+                        for(int j = 1; j <= n; j++){
+                            System.out.print("* ");
+                        }
+                        System.out.println();
+                    }
+
+                    for(int i = n - 1; i >= 1; i--){
+                        for(int j = 1; j <= n - i; j++){
+                            System.out.print(" ");
+                        }
+                        for(int j = 1; j <= n; j++){
+                            System.out.print("* ");
+                        }
+                        System.out.println();
+                    }
                     
                     break;
 
                 case 11:
-                    
+                    System.out.println("Figura hueca");
+                    System.out.println("Ingrese tamaño:");
+                    int tam = entrada.nextInt();
+
+                    for(int i = 1; i <= tam; i++){
+                        for(int j = 1; j <= tam; j++){
+                            if(i == 1 || i == tam || j == 1 || j == tam){
+                                System.out.print("* ");
+                            }else{
+                                System.out.print("  ");
+                            }
+                        }
+                        System.out.println();
+                    }
                     break;
 
                 case 12:
-                    
+                    System.out.println("Patron de numeros");
+                    System.out.println("Ingrese tamaño:");
+                    int num = entrada.nextInt();
+
+                    for(int i = 1; i <= num; i++){
+                        for(int j = 1; j <= i; j++){
+                            System.out.print(j + " ");
+                        }
+                        System.out.println();
+                    }
                     break;
 
                 case 13:
-                    
+                    System.out.println("Diamante");
+                    System.out.println("Ingrese tamaño:");
+                    int d = entrada.nextInt();
+
+                    for(int i = 1; i <= d; i++){
+                        for(int j = 1; j <= d - i; j++){
+                            System.out.print(" ");
+                        }
+                        for(int j = 1; j <= (2*i - 1); j++){
+                            System.out.print("*");
+                        }
+                        System.out.println();
+                    }
+
+                    for(int i = d - 1; i >= 1; i--){
+                        for(int j = 1; j <= d - i; j++){
+                            System.out.print(" ");
+                        }
+                        for(int j = 1; j <= (2*i - 1); j++){
+                            System.out.print("*");
+                        }
+                        System.out.println();
+                    }
                     break;
 
                 case 14:
-                    
+                    System.out.println("Calculadora basica");
+                    System.out.println("Ingrese primer numero:");
+                    double na = entrada.nextDouble();
+
+                    System.out.println("Ingrese segundo numero:");
+                    double nb = entrada.nextDouble();
+
+                    System.out.println("Seleccione operacion (+, -, *, /):");
+                    char op = entrada.next().charAt(0);
+
+                    double res = 0;
+
+                    switch(op){
+                        case '+':
+                            res = na + nb;
+                            break;
+                        case '-':
+                            res = na - nb;
+                            break;
+                        case '*':
+                            res = na * nb;
+                            break;
+                        case '/':
+                            if(nb != 0){
+                                res = na / nb;
+                            }else{
+                                System.out.println("No se puede dividir entre 0");
+                                break;
+                            }
+                            break;
+                        default:
+                            System.out.println("Operacion invalida");
+                    }
+
+                    System.out.println("Resultado: " + res);
                     break;
                 default:
                     System.out.println("Opcion invalida");
@@ -390,6 +526,10 @@ public class EstructuraDatos{
                 }
 
             System.out.println("Si deseas repetir presiona s o S");
+            System.out.println(" /\\_/\\");
+            System.out.println("( o.o )");
+            System.out.println(" > ^ <");
+            
             repetir = entrada.next().charAt(0);
 
         }while(repetir == 's' || repetir == 'S');

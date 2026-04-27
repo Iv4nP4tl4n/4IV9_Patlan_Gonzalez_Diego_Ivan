@@ -1,7 +1,7 @@
 public class Principal {
+    
     public static void main(String[] args) {
         
-        Figuras ejecucion = new Figuras();
+        Ejercicios ejecucion = new Ejercicios();
     }
-    
 }

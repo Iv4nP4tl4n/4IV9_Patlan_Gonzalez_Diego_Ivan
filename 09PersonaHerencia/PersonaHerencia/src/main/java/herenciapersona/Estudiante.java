@@ -8,9 +8,7 @@ public class Estudiante extends Persona {
 
     private int numBoleta;
 
-    public Estudiante(int numBoleta, String nombre, int edad, char genero) {
-        super(nombre, edad, genero);
-        this.numBoleta = numBoleta;
+    public Estudiante() {
     }
 
     public int getNumBoleta() {

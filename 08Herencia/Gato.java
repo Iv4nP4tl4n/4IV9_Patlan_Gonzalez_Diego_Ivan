@@ -21,6 +21,8 @@ public class Gato extends Animal{
         this.num_vidas = num_vidas;
     }
 
+    
+
     public void mostrarGato(){
         System.out.println("El nombre del michi: " +getNombre()+"\n"
         +"su raza es: "+ getRaza()+ "\n"

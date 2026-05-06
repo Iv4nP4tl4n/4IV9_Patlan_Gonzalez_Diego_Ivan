@@ -19,7 +19,10 @@ public class DAOEstudiante {
             int op = Integer.parseInt(JOptionPane.showInputDialog(
                     "Ingresa la opcion deseada:\n"
                     + "1.- Dar de alta a nuevo estudiante\n"
-                    + "2.- Mostrar los datos de todos los estudiantes"));
+                    + "2.- Mostrar los datos de todos los estudiantes\n"
+                    + "3.- Buscar estudiante\n"
+                    + "4.- Editar estudiante\n"
+                    + "5.- Eliminar estudiante"));
 
             switch (op) {
 
@@ -29,6 +32,18 @@ public class DAOEstudiante {
 
                 case 2:
                     mostrarEstudiante();
+                    break;
+
+                case 3:
+                    buscarEstudiante();
+                    break;
+
+                case 4:
+                    editarEstudiante();
+                    break;
+
+                case 5:
+                    eliminarEstudiante();
                     break;
 
                 default:
@@ -79,5 +94,77 @@ public class DAOEstudiante {
         }
 
         JOptionPane.showMessageDialog(null, datos);
+    }
+
+    public void buscarEstudiante() {
+
+        int boleta = Integer.parseInt(
+                JOptionPane.showInputDialog("Ingrese la boleta a buscar:"));
+
+        for (int i = 0; i < x; i++) {
+
+            if (obj[i].getNumBoleta() == boleta) {
+
+                JOptionPane.showMessageDialog(null,
+                        "Boleta: " + obj[i].getNumBoleta()
+                        + "\nNombre: " + obj[i].getNombre()
+                        + "\nEdad: " + obj[i].getEdad()
+                        + "\nGenero: " + obj[i].getGenero());
+
+                return;
+            }
+        }
+
+        JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
+    }
+
+    public void editarEstudiante() {
+
+        int boleta = Integer.parseInt(
+                JOptionPane.showInputDialog("Ingrese la boleta del estudiante a editar:"));
+
+        for (int i = 0; i < x; i++) {
+
+            if (obj[i].getNumBoleta() == boleta) {
+
+                obj[i].setNombre(
+                        JOptionPane.showInputDialog("Nuevo nombre:"));
+
+                obj[i].setEdad(Integer.parseInt(
+                        JOptionPane.showInputDialog("Nueva edad:")));
+
+                obj[i].setGenero(
+                        JOptionPane.showInputDialog("Nuevo genero:")
+                                .charAt(0));
+
+                JOptionPane.showMessageDialog(null, "Datos actualizados");
+                return;
+            }
+        }
+
+        JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
+    }
+
+    public void eliminarEstudiante() {
+
+        int boleta = Integer.parseInt(
+                JOptionPane.showInputDialog("Ingrese la boleta a eliminar:"));
+
+        for (int i = 0; i < x; i++) {
+
+            if (obj[i].getNumBoleta() == boleta) {
+
+                for (int j = i; j < x - 1; j++) {
+                    obj[j] = obj[j + 1];
+                }
+
+                x--;
+
+                JOptionPane.showMessageDialog(null, "Estudiante eliminado");
+                return;
+            }
+        }
+
+        JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
     }
 }

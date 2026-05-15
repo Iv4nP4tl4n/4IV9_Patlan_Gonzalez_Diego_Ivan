@@ -1,17 +1,19 @@
-
-package herenciapersona;
-
 /**
  *
  * @author ivanp
  */
-public class Persona {
+package herenciapersona;
+
+import java.io.Serializable;
+
+public class Persona implements Serializable {
+
     private String nombre;
     private int edad;
     private char genero;
-    
-    public Persona(){
-        
+
+    public Persona() {
+
     }
 
     public Persona(String nombre, int edad, char genero) {
@@ -43,7 +45,4 @@ public class Persona {
     public void setGenero(char genero) {
         this.genero = genero;
     }
-    
-    
-    
 }

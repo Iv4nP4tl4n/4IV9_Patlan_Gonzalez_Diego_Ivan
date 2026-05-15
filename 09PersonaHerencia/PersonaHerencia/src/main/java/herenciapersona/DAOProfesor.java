@@ -1,60 +1,61 @@
+package herenciapersona;
+
 /**
  *
  * @author ivanp
  */
-package herenciapersona;
-
 import javax.swing.JOptionPane;
 import java.io.*;
 
-public class DAOEstudiante {
+public class DAOProfesor {
 
-    Estudiante obj[] = new Estudiante[5];
+    Profesor obj[] = new Profesor[5];
     int x = 0;
 
     void menu() {
+
         String var = "si";
 
         while (var.equalsIgnoreCase("si")) {
 
             int op = Integer.parseInt(JOptionPane.showInputDialog(
                     "Ingresa la opcion deseada:\n"
-                    + "1.- Dar de alta a nuevo estudiante\n"
-                    + "2.- Mostrar los datos de todos los estudiantes\n"
-                    + "3.- Buscar estudiante\n"
-                    + "4.- Editar estudiante\n"
-                    + "5.- Eliminar estudiante\n"
-                    + "6.- Guardar estudiantes\n"
-                    + "7.- Cargar estudiantes"));
+                    + "1.- Dar de alta a nuevo profesor\n"
+                    + "2.- Mostrar los datos de todos los profesores\n"
+                    + "3.- Buscar profesor\n"
+                    + "4.- Editar profesor\n"
+                    + "5.- Eliminar profesor\n"
+                    + "6.- Guardar profesores\n"
+                    + "7.- Cargar profesores"));
 
             switch (op) {
 
                 case 1:
-                    pedirEstudiante();
+                    pedirProfesor();
                     break;
 
                 case 2:
-                    mostrarEstudiante();
+                    mostrarProfesor();
                     break;
 
                 case 3:
-                    buscarEstudiante();
+                    buscarProfesor();
                     break;
 
                 case 4:
-                    editarEstudiante();
+                    editarProfesor();
                     break;
 
                 case 5:
-                    eliminarEstudiante();
+                    eliminarProfesor();
                     break;
 
                 case 6:
-                    guardarEstudiantes();
+                    guardarProfesores();
                     break;
 
                 case 7:
-                    cargarEstudiantes();
+                    cargarProfesores();
                     break;
 
                 default:
@@ -65,40 +66,40 @@ public class DAOEstudiante {
         }
     }
 
-    public void pedirEstudiante() {
+    public void pedirProfesor() {
 
         if (x < 5) {
 
-            Estudiante est = new Estudiante();
+            Profesor prof = new Profesor();
 
-            est.setNumBoleta(Integer.parseInt(
-                    JOptionPane.showInputDialog("Ingresa la boleta del estudiante:")));
+            prof.setIdProfesor(Integer.parseInt(
+                    JOptionPane.showInputDialog("Ingresa la Id del profesor:")));
 
-            est.setNombre(
-                    JOptionPane.showInputDialog("Ingrese el nombre del estudiante:"));
+            prof.setNombre(
+                    JOptionPane.showInputDialog("Ingrese el nombre del profesor:"));
 
-            est.setEdad(Integer.parseInt(
-                    JOptionPane.showInputDialog("Ingrese la edad del estudiante:")));
+            prof.setEdad(Integer.parseInt(
+                    JOptionPane.showInputDialog("Ingrese la edad del profesor:")));
 
-            est.setGenero(
-                    JOptionPane.showInputDialog("Ingrese el genero del estudiante:")
+            prof.setGenero(
+                    JOptionPane.showInputDialog("Ingrese el genero del profesor:")
                             .charAt(0));
 
-            obj[x] = est;
+            obj[x] = prof;
             x++;
 
         } else {
-            JOptionPane.showMessageDialog(null, "Solo se pueden guardar 5 alumnos");
+            JOptionPane.showMessageDialog(null, "Solo se pueden guardar 5 profesores");
         }
     }
 
-    public void mostrarEstudiante() {
+    public void mostrarProfesor() {
 
         String datos = "";
 
         for (int i = 0; i < x; i++) {
 
-            datos += "Boleta: " + obj[i].getNumBoleta() + "\n";
+            datos += "Id: " + obj[i].getIdProfesor() + "\n";
             datos += "Nombre: " + obj[i].getNombre() + "\n";
             datos += "Edad: " + obj[i].getEdad() + "\n";
             datos += "Genero: " + obj[i].getGenero() + "\n\n";
@@ -107,17 +108,17 @@ public class DAOEstudiante {
         JOptionPane.showMessageDialog(null, datos);
     }
 
-    public void buscarEstudiante() {
+    public void buscarProfesor() {
 
-        int boleta = Integer.parseInt(
-                JOptionPane.showInputDialog("Ingrese la boleta a buscar:"));
+        int id = Integer.parseInt(
+                JOptionPane.showInputDialog("Ingrese la Id a buscar:"));
 
         for (int i = 0; i < x; i++) {
 
-            if (obj[i].getNumBoleta() == boleta) {
+            if (obj[i].getIdProfesor() == id) {
 
                 JOptionPane.showMessageDialog(null,
-                        "Boleta: " + obj[i].getNumBoleta()
+                        "Id: " + obj[i].getIdProfesor()
                         + "\nNombre: " + obj[i].getNombre()
                         + "\nEdad: " + obj[i].getEdad()
                         + "\nGenero: " + obj[i].getGenero());
@@ -126,17 +127,17 @@ public class DAOEstudiante {
             }
         }
 
-        JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
+        JOptionPane.showMessageDialog(null, "Profesor no encontrado");
     }
 
-    public void editarEstudiante() {
+    public void editarProfesor() {
 
-        int boleta = Integer.parseInt(
-                JOptionPane.showInputDialog("Ingrese la boleta del estudiante a editar:"));
+        int id = Integer.parseInt(
+                JOptionPane.showInputDialog("Ingrese la id del profesor a editar:"));
 
         for (int i = 0; i < x; i++) {
 
-            if (obj[i].getNumBoleta() == boleta) {
+            if (obj[i].getIdProfesor() == id) {
 
                 obj[i].setNombre(
                         JOptionPane.showInputDialog("Nuevo nombre:"));
@@ -153,17 +154,17 @@ public class DAOEstudiante {
             }
         }
 
-        JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
+        JOptionPane.showMessageDialog(null, "Profesor no encontrado");
     }
 
-    public void eliminarEstudiante() {
+    public void eliminarProfesor() {
 
-        int boleta = Integer.parseInt(
-                JOptionPane.showInputDialog("Ingrese la boleta a eliminar:"));
+        int id = Integer.parseInt(
+                JOptionPane.showInputDialog("Ingrese la id a eliminar:"));
 
         for (int i = 0; i < x; i++) {
 
-            if (obj[i].getNumBoleta() == boleta) {
+            if (obj[i].getIdProfesor() == id) {
 
                 for (int j = i; j < x - 1; j++) {
                     obj[j] = obj[j + 1];
@@ -171,39 +172,39 @@ public class DAOEstudiante {
 
                 x--;
 
-                JOptionPane.showMessageDialog(null, "Estudiante eliminado");
+                JOptionPane.showMessageDialog(null, "Profesor eliminado");
                 return;
             }
         }
 
-        JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
+        JOptionPane.showMessageDialog(null, "Profesor no encontrado");
     }
 
-    public void guardarEstudiantes() {
+    public void guardarProfesores() {
 
         try {
 
             ObjectOutputStream escribir =
-                    new ObjectOutputStream(new FileOutputStream("estudiantes.dat"));
+                    new ObjectOutputStream(new FileOutputStream("profesores.dat"));
 
             escribir.writeObject(obj);
             escribir.close();
 
-            JOptionPane.showMessageDialog(null, "Estudiantes guardados");
+            JOptionPane.showMessageDialog(null, "Profesores guardados");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al guardar");
         }
     }
 
-    public void cargarEstudiantes() {
+    public void cargarProfesores() {
 
         try {
 
             ObjectInputStream leer =
-                    new ObjectInputStream(new FileInputStream("estudiantes.dat"));
+                    new ObjectInputStream(new FileInputStream("profesores.dat"));
 
-            obj = (Estudiante[]) leer.readObject();
+            obj = (Profesor[]) leer.readObject();
             leer.close();
 
             x = 0;
@@ -214,7 +215,7 @@ public class DAOEstudiante {
                 }
             }
 
-            JOptionPane.showMessageDialog(null, "Estudiantes cargados");
+            JOptionPane.showMessageDialog(null, "Profesores cargados");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No hay archivo guardado");

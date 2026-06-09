@@ -1,0 +1,8 @@
+c:\Users\ivanp\OneDrive\Escritorio\Programacion\intermedio\4IV9_Apppat_Apmat_Ivan_Patlan\Rompecabezas\CRUDSQL\src\Main\Java\Controlador\RompecabezasControlador.java
+c:\Users\ivanp\OneDrive\Escritorio\Programacion\intermedio\4IV9_Apppat_Apmat_Ivan_Patlan\Rompecabezas\CRUDSQL\src\Main\Java\Modelo\Categorias.java
+c:\Users\ivanp\OneDrive\Escritorio\Programacion\intermedio\4IV9_Apppat_Apmat_Ivan_Patlan\Rompecabezas\CRUDSQL\src\Main\Java\Modelo\ConexionBD.java
+c:\Users\ivanp\OneDrive\Escritorio\Programacion\intermedio\4IV9_Apppat_Apmat_Ivan_Patlan\Rompecabezas\CRUDSQL\src\Main\Java\Modelo\RompecabezasDAO.java
+c:\Users\ivanp\OneDrive\Escritorio\Programacion\intermedio\4IV9_Apppat_Apmat_Ivan_Patlan\Rompecabezas\CRUDSQL\src\Main\Java\Modelo\RompecabezasModelo.java
+c:\Users\ivanp\OneDrive\Escritorio\Programacion\intermedio\4IV9_Apppat_Apmat_Ivan_Patlan\Rompecabezas\CRUDSQL\src\Main\Java\Rompecabezas\Rompecabezas.java
+c:\Users\ivanp\OneDrive\Escritorio\Programacion\intermedio\4IV9_Apppat_Apmat_Ivan_Patlan\Rompecabezas\CRUDSQL\src\Main\Java\Vista\ConexionBD.java
+c:\Users\ivanp\OneDrive\Escritorio\Programacion\intermedio\4IV9_Apppat_Apmat_Ivan_Patlan\Rompecabezas\CRUDSQL\src\Main\Java\Vista\RompecabezasVista.java

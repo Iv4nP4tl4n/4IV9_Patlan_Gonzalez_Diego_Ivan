@@ -5,98 +5,98 @@ package Controlador;
  * @author ivanp
  */
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-
-import Modelo.ConexionDB;
 import Modelo.Producto;
 import Modelo.ProductoDAO;
 import Vista.ProductoVista;
+import java.sql.*;
+import java.util.*;
+import javax.swing.*;
+
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 
 public class ProductoControlador {
+
+    /*
+    El controlador es el intermediario, entre la vista y 
+    el modelo, recibe los eventos del usuario, los clic, seleccion
+    eventos de teclado, y este ejecuta la logica, la cual 
+    corresponde al modelo
+    */
 
     private ProductoDAO dao;
     private ProductoVista vista;
 
-    public ProductoControlador(
-            ProductoDAO dao,
-            ProductoVista vista) {
-
+    //necesita su propio constructor
+    public ProductoControlador(ProductoDAO dao, ProductoVista vista){
         this.dao = dao;
         this.vista = vista;
 
-        inicializarEventos();
-        cargarTabla();
+        //como se van a registrar cada uno de los eventos
+        //un metodo para iniciarlizar los eventos de la vista
+        //inicializarEventos();
     }
 
-    private void inicializarEventos() {
+    //un metodo para cada comportamiento
+    //agregar
+    private void agregar(){
 
-        vista.getBtnAgregar()
-                .addActionListener(e -> agregar());
-    }
+        try{
 
-    private void agregar() {
+            //instancia del producto
+            Producto producto = construirProductoFormulario();
 
-        try {
-
-            Producto producto
-                    = construirProductoFormulario();
-
-            if (producto == null) {
-                return;
-            }
+            if(producto == null) return;
 
             dao.agregar(producto);
 
-            JOptionPane.showMessageDialog(
-                    vista,
-                    "Producto agregado correctamente");
-
+            //validamos mostrando los productos
             cargarTabla();
 
-        } catch (Exception e) {
+        }catch(NumberFormatException ex){
 
-            JOptionPane.showMessageDialog(
-                    vista,
-                    "Error: " + e.getMessage());
+            System.out.println("Verifique que los campos "
+                    + "numericos sean validos");
+
+        }catch(SQLException e){
+
+            System.out.println("Error al agregar "
+                    + e.getMessage());
         }
     }
 
     private Producto construirProductoFormulario() {
 
-        try {
+        try{
 
-            int id = Integer.parseInt(
-                    vista.getTxtId().getText());
+            Producto producto = new Producto();
 
-            String nombre =
-                    vista.getTxtNombre().getText();
+            producto.setId(
+                    Integer.parseInt(
+                            vista.getTxtId().getText()));
 
-            double precio = Double.parseDouble(
-                    vista.getTxtPrecio().getText());
+            producto.setNombre(
+                    vista.getTxtNombre().getText());
 
-            int cantidad = Integer.parseInt(
-                    vista.getTxtCantidad().getText());
+            producto.setPrecio(
+                    Double.parseDouble(
+                            vista.getTxtPrecio().getText()));
 
-            String categoria =
-                    vista.getTxtCategoria().getText();
+            producto.setCantidad(
+                    Integer.parseInt(
+                            vista.getTxtCantidad().getText()));
 
-            return new Producto(
-                    id,
-                    nombre,
-                    precio,
-                    cantidad,
-                    categoria);
+            producto.setCategoria(
+                    vista.getTxtCategoria().getText());
 
-        } catch (NumberFormatException e) {
+            producto.setTipoProducto(
+                    (String)
+                    vista.getCambioTipoProducto()
+                            .getSelectedItem());
 
-            JOptionPane.showMessageDialog(
-                    vista,
-                    "Datos invalidos");
+            return producto;
+
+        }catch(Exception e){
 
             return null;
         }
@@ -104,39 +104,32 @@ public class ProductoControlador {
 
     private void cargarTabla() {
 
-        DefaultTableModel modelo
-                = vista.getModeloTabla();
+        try{
 
-        modelo.setRowCount(0);
+            DefaultTableModel modelo =
+                    vista.getModeloTabla();
 
-        try {
+            modelo.setRowCount(0);
 
-            Connection con
-                    = ConexionDB.getConexion();
-
-            Statement st
-                    = con.createStatement();
-
-            ResultSet rs
-                    = st.executeQuery(
-                            "SELECT * FROM producto");
-
-            while (rs.next()) {
+            for(Producto p : dao.listar()){
 
                 modelo.addRow(new Object[]{
-                    rs.getInt("id"),
-                    rs.getString("nombre"),
-                    rs.getDouble("precio"),
-                    rs.getInt("cantidad"),
-                    rs.getString("categoria")
+
+                    p.getId(),
+                    p.getNombre(),
+                    p.getPrecio(),
+                    p.getCantidad(),
+                    p.getCategoria(),
+                    p.getTipoProducto()
+
                 });
             }
 
-        } catch (Exception e) {
+        }catch(SQLException e){
 
-            JOptionPane.showMessageDialog(
-                    vista,
-                    "Error al cargar tabla");
+            System.out.println(
+                    "Error al cargar tabla "
+                    + e.getMessage());
         }
     }
 }

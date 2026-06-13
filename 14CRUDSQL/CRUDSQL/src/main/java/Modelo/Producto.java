@@ -1,40 +1,42 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Modelo;
 
 /**
  *
- * @author ivanp
+ * @author Ivanp
  */
 public class Producto {
-
+    
     private int id;
     private String nombre;
     private double precio;
     private int cantidad;
     private String categoria;
-
-    public Producto() {
-
+    
+    public Producto(){
+        
         this.id = 0;
         this.nombre = "";
         this.precio = 0.0;
         this.cantidad = 0;
         this.categoria = "";
+    
     }
 
-    public Producto(int id, String nombre,
-            double precio, int cantidad,
-            String categoria) {
-
+    public Producto(int id, String nombre, double precio, 
+            int cantidad, String categoria) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
         this.categoria = categoria;
     }
-
+    
+   
     public Producto(int id, String nombre) {
-
         this.id = id;
         this.nombre = nombre;
         this.precio = 0.0;
@@ -63,10 +65,7 @@ public class Producto {
     }
 
     public void setPrecio(double precio) {
-
-        if (precio >= 0) {
-            this.precio = precio;
-        }
+        if(precio >= 0)this.precio = precio;
     }
 
     public int getCantidad() {
@@ -74,10 +73,7 @@ public class Producto {
     }
 
     public void setCantidad(int cantidad) {
-
-        if (cantidad >= 0) {
-            this.cantidad = cantidad;
-        }
+        if(cantidad >= 0)this.cantidad = cantidad;
     }
 
     public String getCategoria() {
@@ -87,28 +83,25 @@ public class Producto {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-
-    public String mostrarDetalle() {
-
-        return String.format(
-                "ID: %d | Nombre: %s | Precio: %.2f | Cantidad: %d | Categoria: %s",
-                id, nombre, precio, cantidad, categoria);
+    
+    //aqui tenemos que aplicar polimorfismo, 
+    public String mostrarDetalle(){
+        return String.format("ID: %d | Nombre: %s | Precio: $%.2f | Cantidad: %d | Categoria: %s", 
+                                id, nombre, precio, cantidad, categoria);
     }
-
-    public double calcularValorInventario() {
-        return precio * cantidad;
+    
+    //mas sobrecarga para calcular
+    public double calcularValorInventario(){
+        return precio*cantidad;
     }
-
-    public double calcularValorInventario(double porcentajeDescuento) {
-
-        double total = precio * cantidad;
-        double descuento = total * (porcentajeDescuento / 100);
-
-        return total - descuento;
+    
+    public double calcularValorInventario(double porcetajeDescuento){
+        return(precio - precio*(porcetajeDescuento/100)*cantidad);
     }
-
+    
     @Override
-    public String toString() {
+    public String toString(){
         return mostrarDetalle();
     }
+    
 }
